@@ -1,16 +1,23 @@
 import Image from "next/image";
 import logoImg from "../../public/livepop.png"
 import { Container ,Wrapper, TopWrapper, MiddleWrapper, Logo,
-  MainCard, DetailWrapper } from '../styles/home'
+  MainCard, DetailWrapper, BottomWrapper } from '../styles/home'
 import { useEffect, useState } from "react";
 
 
 export default function Home(){
   const [isFirstRender, setIsFirstRender] = useState(false);
+  const [clickCard, setClickCard] = useState(false);
 
   useEffect(() => {
     setIsFirstRender(true);
   }, [])
+
+  const onClickCard = () => {
+    setClickCard(true);
+  }
+
+  console.log(clickCard);
 
   return (
     <Container>
@@ -21,16 +28,19 @@ export default function Home(){
           </Logo>
         </TopWrapper>
         <MiddleWrapper>
-          <MainCard>관광특구</MainCard>
-          <MainCard>고궁·문화유산</MainCard>
-          <MainCard>인구밀집지역</MainCard>
-          <MainCard>발달상권</MainCard>
-          <MainCard>공원</MainCard>
+          <MainCard onClick={onClickCard} $isFirstRender={isFirstRender}>관광특구</MainCard>
+          <MainCard onClick={onClickCard} $isFirstRender={isFirstRender}>고궁·문화유산</MainCard>
+          <MainCard onClick={onClickCard} $isFirstRender={isFirstRender}>인구밀집지역</MainCard>
+          <MainCard onClick={onClickCard} $isFirstRender={isFirstRender}>발달상권</MainCard>
+          <MainCard onClick={onClickCard} $isFirstRender={isFirstRender}>공원</MainCard>
         </MiddleWrapper>
-        <DetailWrapper $isFirstRender={isFirstRender}>
+        <DetailWrapper $clickCard={clickCard} $isFirstRender={isFirstRender}>
           ddd
         </DetailWrapper>
       </Wrapper>
+      <BottomWrapper>
+        
+      </BottomWrapper>
     </Container>
   )
 }
