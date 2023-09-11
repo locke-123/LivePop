@@ -140,26 +140,63 @@ export const MainCard = styled.div<{$isFirstRender?: boolean}>`
   }
 `
 
-export const DetailWrapper = styled.div<{$isFirstRender?: boolean, $clickCard?: boolean}>`
-  background-color: green;
+export const DetailWrapper = styled.div<{$clickCard?: boolean, $detailData?: {title: string; type: number;list: { name: string; }[];}}>`
+  background-color: #eee;
   margin-top: 50px;
   width: 1200px;
-  height: 400px;
   border-radius: 25px;
-  ${props => props.$isFirstRender ? css`
-    transition: opacity 0.5s ease-in-out 1s;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 50px;
+  ${props => props.$clickCard ? css`
+    transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
     opacity: 1;
-    animation: ${LogoKeyframes} 0.5s ease-in-out 1s`
+    animation: ${LogoKeyframes} 0.5s ease-in-out
+    `
       : css`
     transition: none;
     opacity: 0;
     animation: none;
     `
   };
+  height: ${props => props.$detailData?.type === 1 ? '650px' : props.$detailData?.type === 2 ? '400px' : props.$detailData?.type === 3 ? '600px' : '0px'}
+`
+
+export const DetailCardType1 = styled.div`
+  width: 200px;
+  height: 225px;
+  margin: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  overflow: hidden;
+  border-radius: 12px;
 `
 
 export const BottomWrapper = styled.div`
   background-color: #edd48f;
   width: 100%;
-  height: 300px;
+  height: 200px;
+`
+
+export const DetailCardType1Img = styled.div`
+  transition: transform 0.2s ease-in-out;
+  width: 200px;
+  height: 200px;
+  &:hover {
+    transform: scale(1.1);
+  }
+`
+
+export const DetailCardType1Text = styled.div`
+  width: 200px;
+  height: 25px;
+  background-color: #eee;
+  z-index: 1;
+  text-align: center;
 `
