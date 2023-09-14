@@ -1,0 +1,97 @@
+{
+    "AREA_NM": "광화문·덕수궁",
+    "AREA_CD": "POI009",
+    "AREA_CONGEST_LVL": "여유",
+    "AREA_CONGEST_MSG": "사람이 몰려있을 가능성이 낮고 붐빔은 거의 느껴지지 않아요. 도보 이동이 자유로워요.",
+    "AREA_PPLTN_MIN": "24000",
+    "AREA_PPLTN_MAX": "26000",
+    "MALE_PPLTN_RATE": "51.8",
+    "FEMALE_PPLTN_RATE": "48.2",
+    "PPLTN_RATE_0": "0.1",
+    "PPLTN_RATE_10": "1.9",
+    "PPLTN_RATE_20": "20.1",
+    "PPLTN_RATE_30": "28.2",
+    "PPLTN_RATE_40": "24.9",
+    "PPLTN_RATE_50": "15.9",
+    "PPLTN_RATE_60": "6.2",
+    "PPLTN_RATE_70": "2.8",
+    "RESNT_PPLTN_RATE": "3.6",
+    "NON_RESNT_PPLTN_RATE": "96.4",
+    "REPLACE_YN": "N",
+    "PPLTN_TIME": "2023-09-14 19:00",
+    "FCST_YN": "Y",
+    "FCST_PPLTN": [
+        {
+            "FCST_TIME": "2023-09-14 20:00",
+            "FCST_CONGEST_LVL": "보통",
+            "FCST_PPLTN_MIN": "24000",
+            "FCST_PPLTN_MAX": "26000"
+        },
+        {
+            "FCST_TIME": "2023-09-14 21:00",
+            "FCST_CONGEST_LVL": "보통",
+            "FCST_PPLTN_MIN": "18000",
+            "FCST_PPLTN_MAX": "20000"
+        },
+        {
+            "FCST_TIME": "2023-09-14 22:00",
+            "FCST_CONGEST_LVL": "여유",
+            "FCST_PPLTN_MIN": "16000",
+            "FCST_PPLTN_MAX": "18000"
+        },
+        {
+            "FCST_TIME": "2023-09-14 23:00",
+            "FCST_CONGEST_LVL": "여유",
+            "FCST_PPLTN_MIN": "10000",
+            "FCST_PPLTN_MAX": "12000"
+        },
+        {
+            "FCST_TIME": "2023-09-15 00:00",
+            "FCST_CONGEST_LVL": "여유",
+            "FCST_PPLTN_MIN": "8000",
+            "FCST_PPLTN_MAX": "8500"
+        },
+        {
+            "FCST_TIME": "2023-09-15 01:00",
+            "FCST_CONGEST_LVL": "여유",
+            "FCST_PPLTN_MIN": "5000",
+            "FCST_PPLTN_MAX": "5500"
+        },
+        {
+            "FCST_TIME": "2023-09-15 02:00",
+            "FCST_CONGEST_LVL": "여유",
+            "FCST_PPLTN_MIN": "4000",
+            "FCST_PPLTN_MAX": "4500"
+        },
+        {
+            "FCST_TIME": "2023-09-15 03:00",
+            "FCST_CONGEST_LVL": "여유",
+            "FCST_PPLTN_MIN": "3500",
+            "FCST_PPLTN_MAX": "4000"
+        },
+        {
+            "FCST_TIME": "2023-09-15 04:00",
+            "FCST_CONGEST_LVL": "여유",
+            "FCST_PPLTN_MIN": "3000",
+            "FCST_PPLTN_MAX": "3500"
+        },
+        {
+            "FCST_TIME": "2023-09-15 05:00",
+            "FCST_CONGEST_LVL": "여유",
+            "FCST_PPLTN_MIN": "3000",
+            "FCST_PPLTN_MAX": "3500"
+        },
+        {
+            "FCST_TIME": "2023-09-15 06:00",
+            "FCST_CONGEST_LVL": "여유",
+            "FCST_PPLTN_MIN": "3500",
+            "FCST_PPLTN_MAX": "4000"
+        },
+        {
+            "FCST_TIME": "2023-09-15 07:00",
+            "FCST_CONGEST_LVL": "여유",
+            "FCST_PPLTN_MIN": "4000",
+            "FCST_PPLTN_MAX": "4500"
+        }
+    ]
+}
