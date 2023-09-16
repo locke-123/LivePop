@@ -9,12 +9,16 @@ import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 
+const fetcher = async (AreaCode: string) => {
+    const url = `http://openapi.seoul.go.kr:8088/${process.env.NEXT_PUBLIC_SEOUL_API_KEY}/json/citydata_ppltn/1/1/${AreaCode}`;
+    const response = await axios.get(url).then((response) => {
+        return response.data["SeoulRtd.citydata_ppltn"][0];
+    }).catch((reason) => {console.error(reason); return null;});
+    return response;
+}
+
 // const fetcher = async (AreaCode: string) => {
-//     const url = `http://openapi.seoul.go.kr:8088/${process.env.NEXT_PUBLIC_SEOUL_API_KEY}/json/citydata_ppltn/1/1/${AreaCode}`;
-//     const response = await axios.get(url).then((response) => {
-//         return response.data["SeoulRtd.citydata_ppltn"][0];
-//     }).catch((reason) => {console.error(reason); return null;});
-//     return response;
+//     return testData;
 // }
 
 interface InitialDataProps {
@@ -49,10 +53,6 @@ interface InitialDataProps {
     }
 }
 
-const fetcher = async (AreaCode: string) => {
-    return testData;
-}
-
 const averageCalc = (arg1: string, arg2: string): number => {
     const numArg1 = Number(arg1);
     const numArg2 = Number(arg2);
@@ -60,44 +60,62 @@ const averageCalc = (arg1: string, arg2: string): number => {
     return result;
 }
 
+const colorPick = (arg1: string): string => {
+    switch (arg1) {
+        case "여유":
+            return "rgb(0, 211, 105)"
+        case "보통":
+            return "rgb(130, 211, 0)"
+        case "붐빔":
+            return "rgb(211, 120, 0)"
+        default:
+            return "rgb(211, 25, 0)"
+    }
+}
+
 Chart.register(...registerables);
 
 export default function InfoPage({ initialData }: InitialDataProps){
     const [currentAmount, setCurrentAmount] = useState(0);
-
-    useEffect(() => {
-        setCurrentAmount(averageCalc(initialData.AREA_PPLTN_MAX, initialData.AREA_PPLTN_MIN));
-    }, [initialData])
-    console.log(initialData);
-
-    const data = {
-        labels: ['20:00', '21:00', '22:00', '23:00', '24:00', '01:00'],
+    const [lineData, setLineData] = useState({
+        labels: ['0'],
         datasets: [{
-          data: [25000, 21000, 17000, 12000, 9000, 5000],
+          data: [0],
           borderWidth: 2,
-          backgroundColor: ['rgb(35, 185, 30)','rgb(10, 19, 105)','rgb(117, 202, 132)','rgb(117, 202, 132)','rgb(117, 202, 132)','rgb(117, 202, 132)'],
+          backgroundColor: ['rgba(0, 0, 0, 0.5)'],
           borderColor: 'rgba(0, 0, 0, 0.5)',
           pointRadius: 10,
           pointHoverRadius: 7,
         }]
-    }
+    });
+
+    useEffect(() => {
+        if(initialData.FCST_PPLTN !== null){
+            setLineData({
+                labels: initialData.FCST_PPLTN.map((el) => el.FCST_TIME.split(" ")[1]),
+                datasets: [{
+                  data: initialData.FCST_PPLTN.map((el) => averageCalc(el.FCST_PPLTN_MAX, el.FCST_PPLTN_MIN)),
+                  borderWidth: 2,
+                  backgroundColor: initialData.FCST_PPLTN.map((el) => colorPick(el.FCST_CONGEST_LVL)),
+                  borderColor: 'rgba(0, 0, 0, 0.5)',
+                  pointRadius: 10,
+                  pointHoverRadius: 7,
+                }]
+            });
+        }
+        setCurrentAmount(averageCalc(initialData.AREA_PPLTN_MAX, initialData.AREA_PPLTN_MIN));
+    }, [initialData])
+    console.log(initialData);
     
     const options = {
         plugins: {
             legend: {
                 display: false
             },
-            tooltip: {
-                callbacks: {
-                    label: function() {
-                        return ' 여유    약 123명';
-                    },
-                },
-            },
         },
         scales: {
             y: {
-                beginAtZero: true,
+                beginAtZero: false,
             },
         },
     };
@@ -122,7 +140,7 @@ export default function InfoPage({ initialData }: InitialDataProps){
                     <CurrentPeopleAmount>현재 약 <span style={{fontSize: '36px'}}>{currentAmount}</span>명</CurrentPeopleAmount>
                     <CurrentPeopleTime>측정 시간: {initialData.PPLTN_TIME.split(' ')[1]}</CurrentPeopleTime>
                 </CurrentPeopleWrapper>
-                <LineWrapper><Line data={data} options={options} /></LineWrapper>
+                <LineWrapper><Line data={lineData} options={options} /></LineWrapper>
             </DetailWrapper>
         </Container>
     )
