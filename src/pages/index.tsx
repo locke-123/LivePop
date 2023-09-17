@@ -39,7 +39,7 @@ export default function Home(){
               <Link href={'/info/' + el.areaCd}>
                 <DetailCardType1ImgBox>
                   <DetailCardType1Img>
-                    <Image height={200} width={200} src={el.src} alt={el.name} />
+                    <Image height={200} width={200} src={`/thumbnail/${el.areaCd}.png`} alt={el.name} />
                   </DetailCardType1Img>
                 </DetailCardType1ImgBox>
               </Link>
@@ -67,7 +67,7 @@ export default function Home(){
           const c = detailData.list.map((el, key) => (
             <Link style={{textDecoration: 'none', color: 'black'}} key={key} href={'/info/' + el.areaCd}>
               <DetailCardType3>
-                <Image height={75} width={75} src={el.src} alt={el.name} />
+                <Image height={75} width={75} src={`/thumbnail/${el.areaCd}.png`} alt={el.name} />
                 <DetailCardType3Text>
                   {el.name}
                 </DetailCardType3Text>
@@ -92,11 +92,11 @@ export default function Home(){
         <MiddleWrapper>
           <MainCard onClick={onClickCard} $isFirstRender={isFirstRender} id="0">
             <MainCardText>관광특구</MainCardText>
-            <Image width={200} height={200} priority={true} src={"/maincard1/Gangnam MICE Special Tourist Zone.png"} alt="관광특구" />
+            <Image width={200} height={200} priority={true} src={"/thumbnail/POI001.png"} alt="관광특구" />
           </MainCard>
           <MainCard onClick={onClickCard} $isFirstRender={isFirstRender} id="1">
             <MainCardText>고궁·문화유산</MainCardText>
-            <Image width={200} height={200} priority={true} src={"/maincard2/Gyeongbokgung Palace.png"} alt="고궁·문화유산" />
+            <Image width={200} height={200} priority={true} src={"/thumbnail/POI008.png"} alt="고궁·문화유산" />
           </MainCard>
           <MainCard onClick={onClickCard} $isFirstRender={isFirstRender} id="2">
             <MainCardText>인구밀집지역</MainCardText>
@@ -104,11 +104,11 @@ export default function Home(){
           </MainCard>
           <MainCard onClick={onClickCard} $isFirstRender={isFirstRender} id="3">
             <MainCardText>발달상권</MainCardText>
-            <Image width={200} height={200} priority={true} src={"/maincard3/Bangbae Food Alley.png"} alt="발달상권" />
+            <Image width={200} height={200} priority={true} src={"/thumbnail/POI065.png"} alt="발달상권" />
           </MainCard>
           <MainCard onClick={onClickCard} $isFirstRender={isFirstRender} id="4">
             <MainCardText>공원</MainCardText>
-            <Image width={200} height={200} priority={true} src={"/maincard4/Nanji Hangang Park.png"} alt="공원" />
+            <Image width={200} height={200} priority={true} src={"/thumbnail/POI090.png"} alt="공원" />
           </MainCard>
         </MiddleWrapper>
         <DetailWrapper $clickCard={clickCard} $detailData={detailData}>

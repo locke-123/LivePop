@@ -1,7 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 
 export const Container = styled.div`
-    background-color: orange;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -55,6 +54,7 @@ export const MainText = styled.div`
 export const DetailWrapper = styled.div`
     background-color: white;
     width: 80vw;
+    box-shadow: 0px 5px 5px 1px #ccc;
 `
 
 export const BasicInfoWrapper = styled.div`
@@ -102,8 +102,33 @@ export const CurrentPeopleTime = styled.div`
 `
 
 export const LineWrapper = styled.div`
-    height: 350px;
+    height: 300px;
     display: flex;
     justify-content: center;
-    padding: 20px;
+`
+
+export const PieWrapper = styled.div`
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+`
+
+export const BarWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+`
+
+export const TitleDivider = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 20px;
 `
